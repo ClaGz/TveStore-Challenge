@@ -23,9 +23,8 @@ module.exports = function ( app ) {
 					//Mostrar erros na pagina!
 					res.render ( 'home/index', { error: err } );
 				}
+				res.redirect ( '/list' );
 			} );
-
-			res.redirect ( '/list' );
 		},
 
 		edit: function ( req, res ) {
@@ -68,9 +67,8 @@ module.exports = function ( app ) {
 						//Mostrar erros na pagina!
 						res.render ( 'home/edit', { error: err } );
 					}
+					res.redirect ( '/list' );
 				} );
-
-				res.redirect ( '/list' );
 			} );
 		},
 		

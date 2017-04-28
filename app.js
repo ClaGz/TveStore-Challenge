@@ -3,6 +3,8 @@ var express = require ( 'express' ),
   app = express (),
   mongoose = require ( 'mongoose' );
 
+const port = 3000;
+
 global.db = mongoose.connect ( 'mongodb://localhost:27017/tvestore' );
 
 app.set ( 'views', __dirname + '/views' );
@@ -17,6 +19,6 @@ load( 'models' )
   .then ( 'routes' )
   .into ( app );
 
-app.listen ( 3000, function () {
-  console.log ( 'TVeStore no ar!!' );
+app.listen ( port, function () {
+  console.log ( `TVeStore está no ar! Acesse localhost:${port}/` );
 } );
