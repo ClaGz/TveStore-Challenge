@@ -1,0 +1,16 @@
+{
+  "name": "tvestoreapp",
+  "description": "TveStore - Astonishing!",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.4.7",
+    "express-load": "1.1.8",
+    "ejs": "0.8.5",
+    "mongoose": "~3.6.13",
+    "dateformat": "2.0.0"
+  }
+}

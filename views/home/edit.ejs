@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TV e-Store - Challenge</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+</head>
+<body>
+<div class="row">
+    <form class="form-horizontal" method='post' action="/update">
+        <input type="hidden" name="id" value="<%= project.id %>"/>
+        <fieldset>
+            <!-- Form Name -->
+            <h2 class="text-center">TV e-Store - Challenge</h2>
+            <br/>
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Nome do Projeto</label>
+                <div class="col-md-4">
+                    <input name="name" type="text" placeholder="" value="<%= project.name %>" class="form-control input-md" required="">
+
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textarea">Descrição</label>
+                <div class="col-md-4">
+                    <textarea class="form-control" id="textarea" name="description"><%= project.description %></textarea>
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Data Inicial</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="initialDate" value="<%= project.initialDate %>" type="date" placeholder="" class="form-control input-md">
+                </div>
+            </div>
+
+            <!-- Text input-->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Data Final</label>
+                <div class="col-md-4">
+                    <input id="textinput" name="finalDate" type="date" value="<%= project.finalDate %>" placeholder="" class="form-control input-md">
+
+                </div>
+            </div>
+
+            <!-- Button -->
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton"></label>
+                <div class="col-md-4">
+                    <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary">Editar</button>
+                    | <a href="/list"> Ir para a listagem </a>
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+</div>
+<br/>
+</body>
+</html>

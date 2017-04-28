@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TV e-Store - Challenge</title>
+    <script type="text/javascript" src="javascripts/jquery-3.2.1.js" ></script>
+    <script type="text/javascript" src="javascripts/jquery-ui.min.js" ></script>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/jquery-ui.min.css">
+    <link rel="stylesheet" href="stylesheets/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="stylesheets/jquery-ui.theme.min.css">
+</head>
+<body>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2 class="text-center">TV e-Store - Challenge</h2>
+        <br/>
+
+        <a href="/"> Ir para a criação </a>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Data Inicial</th>
+                <th>Data Final</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+            </thead>
+            <tdbody>
+                <% projects.forEach ( function ( project ) { %>
+                    <tr>
+                        <td> <%= project.name %> </td>
+                        <td> <%= project.description %> </td>
+                        <td> <%= project.initialDate %> </td>
+                        <td> <%= project.finalDate %> </td>
+                        
+                        <td>
+                            <button onclick="location.href='/edit?id=<%= project.id %>';" name="singlebutton" class="btn btn-primary edit-button"> Editar </button> 
+                        </td>
+
+                        <td>
+                            <button id="<%= project.id %>" name="singlebutton" class="btn btn-primary delete-button"> Excluir </button>
+                        </td>
+                    </tr>
+                <% } ) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+
+<script type="text/javascript">
+    
+    $( document ).ready( function () {
+        
+        $( ".delete-button" ).click( function () {
+            
+            var id = $(this).attr( 'id' );
+
+            $('<div></div>').appendTo('body')
+            .html('<div><h6>Deseja realizar a exclusão?</h6></div>')
+            .dialog({
+                modal: true, title: 'Confirmar Exclusão', zIndex: 10000, autoOpen: true,
+                width: '200px', resizable: false,
+                buttons: {
+                    Yes: function () {
+                        $(this).dialog("close");
+
+                        $.ajax({
+                            url: '/delete',
+                            type: 'DELETE',
+                            data: { id: id },
+                            success: function(result) {
+                                location.reload();
+                            }
+                        });
+                    },
+                    No: function () {
+                        $(this).dialog("close");
+                    }
+                },
+                close: function (event, ui) {
+                    $(this).remove();
+                }
+            });
+        } );
+
+    } );
+    
+</script>
+
+
+</html>
+
+
+
+
+
